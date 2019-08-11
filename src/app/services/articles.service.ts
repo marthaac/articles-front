@@ -5,6 +5,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { catchError, map } from 'rxjs/operators';
 import { NotificationService } from 'src/app/services/notification.service';
 import { Article } from '../model/articleModel';
+import { throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -50,6 +51,6 @@ export class ArticlesService {
   private processError(err): Observable<any> {
     const error = err.error.message || 'Error';
     this.notificationService.notifyIfError(error);
-    return Observable.throw(err);
+    return throwError(error);
   }
 }

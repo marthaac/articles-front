@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Article } from './model/articleModel';
 import { ArticlesService } from './services/articles.service';
+import { finalize } from 'rxjs/operators';
+import { MatDialog } from '@angular/material';
+import { DeleteConfirmationComponent } from './delete-confirmation/delete-confirmation.component';
 
 @Component({
   selector: 'app-root',
@@ -13,7 +16,8 @@ export class AppComponent implements OnInit {
   public loading: boolean;
 
   constructor(
-    private articlesService: ArticlesService) {
+    private articlesService: ArticlesService,
+    public dialog: MatDialog) {
   }
 
   ngOnInit(): void {
@@ -24,15 +28,31 @@ export class AppComponent implements OnInit {
 
   private getArticles(): void {
      this.loading = true;
-     this.articlesService.getArticles().subscribe( elements => this.articles = elements);
+     this.articlesService.getArticles().pipe(
+      finalize(() => this.loading = false)
+     ).subscribe( elements => this.articles = elements);
   }
 
   public delete(id: string): void {
-    this.articlesService.deleteArticles(id).subscribe(result => this.getArticles());
+    this.articlesService.deleteArticles(id).subscribe(result => this.getArticles());    
   }
 
   public openUrl(article: Article): void {
     const url = article.storyUrl || article.url;
     window.open(url, '_blank');
+  }
+
+  
+  openConfirmationDialog(id: string, event): void {
+    event.stopPropagation();
+    const dialogRef = this.dialog.open(DeleteConfirmationComponent, {
+      width: '250px',
+      data: {}
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.delete(id);
+      }
+    });
   }
 }

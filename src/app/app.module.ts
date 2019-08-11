@@ -8,11 +8,13 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { MaterialModule } from './material/material.module';
 import { HttpClientModule } from '@angular/common/http';
 import { CustomDatePipe } from './pipes/custom-date.pipe';
+import { DeleteConfirmationComponent } from './delete-confirmation/delete-confirmation.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CustomDatePipe
+    CustomDatePipe,
+    DeleteConfirmationComponent
   ],
   imports: [
     BrowserModule,
@@ -23,6 +25,7 @@ import { CustomDatePipe } from './pipes/custom-date.pipe';
     HttpClientModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [DeleteConfirmationComponent]
 })
 export class AppModule { }
