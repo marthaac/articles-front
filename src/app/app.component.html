@@ -1,11 +1,26 @@
 <div fxLayout="column" fxLayoutAlign="space-between">
-  <div fxLayout="column" fxLayoutAlign="center start">
-      <h1>NH Feed</h1>
-      <h6>We &#60;3 hacker news!</h6>
+  <div class="header" fxLayout="column" fxLayoutAlign="center start">
+    <div class="main_title">HN Feed</div>
+    <div>We &#60;3 hacker news!</div>
   </div>
   <div>
-      <mat-list role="list">
-          <mat-list-item role="listitem">Item 1</mat-list-item>
-      </mat-list>
+    <mat-list role="list">
+      <mat-list-item role="listitem" *ngFor="let article of articles">
+        <div fxLayout="row" class="row" fxFlexFill fxLayoutAlign="space-between center"
+          *ngIf="article.storyTitle || article.title" (click)="openUrl(article)">
+          <div>
+            <span class="title" *ngIf="article.storyTitle">{{article.storyTitle}}</span>
+            <span class="title" *ngIf="!article.storyTitle">{{article.title}}</span>
+            <span class="author"> - {{article.author}} -</span>
+          </div>
+          <div class="title" fxLayout="row" fxFlex="20" fxLayoutAlign="space-between center">
+            <span>{{article.createdAt | customDate}}</span>
+            <button mat-icon-button class="delete" (click)="delete(article.objectID)">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </div>
+        </div>
+      </mat-list-item>
+    </mat-list>
   </div>
 </div>

@@ -14,13 +14,13 @@ export class Article {
      *
      */
     constructor(article) {
-        this.storyTitle = article.story_title || '';
-        this.title = article.title || '';
-        this.author = article.author || '';
+        this.storyTitle = article.story_title;
+        this.title = article.title;
+        this.author = article.author;
         this.createdAt = article.created_at ;
-        this.storyUrl = article.story_url || '';
-        this.url = article.url || '';
+        this.storyUrl = article.story_url;
+        this.url = article.url;
         this.deleted = article.deleted || false;
-        this.objectID = article.objectID || '';
+        this.objectID = article.objectID;
     }
 }

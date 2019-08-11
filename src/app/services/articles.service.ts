@@ -19,7 +19,7 @@ export class ArticlesService {
   }
 
    /*
-    * Get stage
+    * Get articles
     *
     * @returns {Observable<any>}
     */
@@ -31,8 +31,20 @@ export class ArticlesService {
       );
   }
 
+    /*
+    * Delete article
+    *
+    * @returns {Observable<any>}
+    */
+   public deleteArticles(id: string): Observable<any> {
+    return this.httpClient.delete(`${this.baseUrl}/articles/${id}`)
+      .pipe(catchError((err: HttpErrorResponse) => {
+        return this.processError(err);
+      }));
+  }
+
   private  fnMapArticle(data): Array<Article> {
-    return data.list.map(item => new Article(data));
+    return data.map(item => new Article(item));
   }
 
   private processError(err): Observable<any> {

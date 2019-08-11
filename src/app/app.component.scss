@@ -1,0 +1,39 @@
+.header{
+    height: 30vh;
+    background-color: #333;
+    color: #fff;
+    padding: 40px;
+    font-weight: 500;
+}
+
+.row{
+    font-size: 13px;
+    border-bottom: 1px solid #ccc;
+    font-weight: 500;
+    cursor: pointer;
+    padding: 0 20px;
+}
+
+.row:hover{
+   background-color: #fafafa;
+}
+
+.main_title{
+    font-size: 3em;
+}
+
+.title{
+   color: #333;   
+}
+
+.author{
+    color: #999;
+}
+
+.delete{
+    display: none;
+}
+
+.row:hover .delete{
+    display: block;
+}

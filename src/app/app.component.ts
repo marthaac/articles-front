@@ -26,4 +26,13 @@ export class AppComponent implements OnInit {
      this.loading = true;
      this.articlesService.getArticles().subscribe( elements => this.articles = elements);
   }
+
+  public delete(id: string): void {
+    this.articlesService.deleteArticles(id).subscribe(result => this.getArticles());
+  }
+
+  public openUrl(article: Article): void {
+    const url = article.storyUrl || article.url;
+    window.open(url, '_blank');
+  }
 }
