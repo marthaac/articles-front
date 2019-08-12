@@ -5,6 +5,7 @@ This project provide a web application that lists the most recent posted article
 ## Running Locally
 
 - Install [NodeJs](https://nodejs.org/es/download/).
+- Install [Angular CLI](https://cli.angular.io/).
 - Clone this repo.
 - Open a terminal in the root of the project.
 - `npm install` to install all required dependencies.
