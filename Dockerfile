@@ -1,13 +1,24 @@
-FROM node
 
-WORKDIR /app
+FROM node as builder
 
-COPY ["package.json", "package-lock.json*", "./"]
+COPY ./package.json ./package-lock.json ./
 
-RUN npm install
+RUN npm ci && mkdir /ng-app && mv ./node_modules ./ng-app
+
+WORKDIR /ng-app
 
 COPY . .
 
-EXPOSE 4200
+RUN npm run ng build -- --prod --output-path=dist
 
-CMD npm start
+FROM nginx
+
+COPY ./default.conf /etc/nginx/conf.d/
+
+RUN rm -rf /usr/share/nginx/html/*
+
+COPY --from=builder /ng-app/dist /usr/share/nginx/html
+
+CMD ["nginx", "-g", "daemon off;"]
+
+EXPOSE 4200
