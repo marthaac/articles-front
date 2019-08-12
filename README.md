@@ -1,6 +1,6 @@
 # ArticlesFront
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.0.1.
+This project provide a web application that list the most recent posted articles about Node.js on Hacker News. This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.0.1. It's also built using Angular Material.
 
 ## Development server
 
