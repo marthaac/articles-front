@@ -4,17 +4,20 @@ This project provide a web application that lists the most recent posted article
 
 ## Running Locally
 
-- Install [NodeJs](https://nodejs.org/es/download/)
-- Clone this repo
-- `npm install` to install all required dependencies
+- Install [NodeJs](https://nodejs.org/es/download/).
+- Clone this repo.
+- Open a terminal in the root of the project.
+- `npm install` to install all required dependencies.
 - Run `npm start` for run the application. 
 - Navigate to `http://localhost:4200/`. 
 
 ## Use Docker
 
 You can also run this app as a Docker container:
-- Clone this repo
-- Install [Docker](https://docs.docker.com/install/)
-- Build and Run the Docker container locally:`docker-compose up --build`
+- Install [Docker](https://docs.docker.com/install/).
+- Clone this repo.
+- Open a terminal in the root of the project.
+- Build and Run the Docker container locally:`docker-compose up --build`.
+- Navigate to `http://localhost:4200/`.
 
 
