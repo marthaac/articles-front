@@ -1,16 +1,24 @@
+
 <div fxLayout="column" fxLayoutAlign="space-between">
+  <!-- HEADER -->
   <div class="header" fxLayout="column" fxLayoutAlign="center start">
     <div class="main_title">HN Feed</div>
     <div>We &#60;3 hacker news!</div>
   </div>
+  <!-- /HEADER -->
+
+  <!-- BODY -->
   <div fxLayout="column">
     <mat-progress-bar mode="indeterminate" value="40" *ngIf="loading"></mat-progress-bar>
     <mat-list role="list">
       <mat-list-item role="listitem" *ngFor="let article of articles">
+         <!-- If there is story_title or title -->
         <div fxLayout="row" class="row" fxFlexFill fxLayoutAlign="space-between center"
           *ngIf="article.storyTitle || article.title" (click)="openUrl(article)">
           <div>
-            <span class="title" *ngIf="article.storyTitle">{{article.storyTitle}}</span>
+            <!-- If story_title -->
+            <span class="title" *ngIf="article.storyTitle">{{article.storyTitle}}</span> 
+            <!-- If story_title is null -->
             <span class="title" *ngIf="!article.storyTitle">{{article.title}}</span>
             <span class="author"> - {{article.author}} -</span>
           </div>
@@ -24,4 +32,5 @@
       </mat-list-item>
     </mat-list>
   </div>
+  <!-- /BODY -->
 </div>
